@@ -1,0 +1,6 @@
+let mode='image'; const prompt=document.querySelector('#prompt'), generate=document.querySelector('#generate'), status=document.querySelector('#status'), gallery=document.querySelector('#gallery');
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');mode=b.dataset.mode;generate.textContent=mode==='image'?'✨ Generate Image':'🎬 Generate Video';});
+generate.onclick=()=>{if(!prompt.value.trim()){status.textContent='Please describe what you want to create.';return} status.textContent='AI provider connection is the next step. Your prompt is ready to send.';};
+document.querySelector('#clear').onclick=()=>{gallery.innerHTML='<div class="empty"><div>✨</div><p>Your creations will appear here.</p><small>Connect an AI provider to enable real generation.</small></div>';localStorage.removeItem('mjs-generations')};
+let deferred; window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;document.querySelector('#installBtn').classList.remove('hidden')}); document.querySelector('#installBtn').onclick=async()=>{if(deferred){deferred.prompt();await deferred.userChoice;deferred=null}};
+if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));

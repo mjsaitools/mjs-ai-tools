@@ -1,0 +1,10 @@
+{
+  "name":"MJS AI Tools",
+  "short_name":"MJS AI",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#080b12",
+  "theme_color":"#111827",
+  "description":"MJS AI Tools creative studio",
+  "icons":[]
+}
